@@ -26,6 +26,8 @@ namespace iStayHostelFinder.Controllers
       
         public ActionResult Register()
         {
+            List<City> CityList = db.Cities.ToList();
+            ViewBag.CityList = new SelectList(CityList, "ID", "City_Name");
             return View();
         }
         [HttpPost]
@@ -335,5 +337,13 @@ namespace iStayHostelFinder.Controllers
             return View();
         }
 
+
+
+        public JsonResult GetInstitutes(int CityID)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Institute> institutesList = db.Institutes.Where(x => x.City_ID == CityID).ToList();
+            return Json(institutesList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

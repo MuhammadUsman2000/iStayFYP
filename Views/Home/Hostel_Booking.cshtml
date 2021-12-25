@@ -343,17 +343,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>
-                                        Adults
-                                        <a href="#" title="Adults" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="+18 years"> <i class="label_icon_info fa fa-info-circle"></i></a>
+                                        No. of Beds
+                                        <a href="#" title="Member" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please select number of beds you required"> <i class="label_icon_info fa fa-info-circle"></i></a>
                                     </label>
                                     <div class="form_select">
-                                        <select name="booking-adults" class="Binput form-control" title="Adults" data-header="Adults">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="4">5</option>
-                                        </select>
+                                        @Html.DropDownListFor(model => model.Beds, new List<SelectListItem>
+                                                             { 
+                                                                new SelectListItem{Text="1", Value="1"},
+                                                                new SelectListItem{Text="2", Value="2"},
+                                                                new SelectListItem{Text="3", Value="3"},
+                                                                new SelectListItem{Text="4", Value="4"}
+                                                             }, "-----Select-----", new { @class = "Binput form-control" })
+                                        @Html.ValidationMessageFor(model => model.Beds, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -364,9 +365,10 @@
                                         <label>Room Type</label>
                                         <div class="form_select">
                                             <select name="booking-roomtype" class="Binput form-control" title="Select Room Type" data-header="Select Room Type">
-                                                <option value="Single Room" data-subtext="<span class='label label-info'>€89 / night</span>">Single Room </option>
-                                                <option value="Double Room" data-subtext="<span class='label label-info'>€129 / night</span>">Double Room</option>
-                                                <option value="Deluxe Room" data-subtext="<span class='label label-info'>€89 / night</span>">Deluxe Room</option>
+                                                @foreach (var type in ViewBag.RoomTypes)
+                                                {
+                                                <option value="Single Room" data-subtext="<span class='label label-info'>@type.Price / Bed</span>">@type.RoomType </option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -376,7 +378,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Your Comments</label>
-                                        @Html.TextAreaFor(x => x.Message, new { htmlAttributes = new { @class = "multi-line  Binput form-control", @placeholder = "Your Comments..." } })
+                                        <textarea class="Binput form-control"></textarea>
+                                        @*@Html.TextAreaFor(x => x.Message, new { htmlAttributes = new { @class = "multi-line  Binput form-control", @placeholder = "Your Comments..." } })*@
                                     </div>
                                 </div>
                             </div>
@@ -393,41 +396,23 @@
             <div class="col-md-4">
                 <div class="special_offers">
                     <div class="main_title a_left upper">
-                        <h2>Special Offers</h2>
+                        <h2>Rooms types</h2>
                     </div>
-                    <article class="room mb40">
-                        <figure>
-                            <a href="room.html" class="hover_effect h_blue h_link">
-                                <img src="images/rooms/special1.jpg" class="img-responsive" alt="Image">
-                            </a>
-                            <figcaption>
-                                <h4><a href="room.html">Single Room</a></h4>
-                                <div class="price">€ 89<span> / night</span></div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="room mb40">
-                        <figure>
-                            <a href="room.html" class="hover_effect h_blue h_link">
-                                <img src="images/rooms/special2.jpg" class="img-responsive" alt="Image">
-                            </a>
-                            <figcaption>
-                                <h4><a href="room.html">Double Room</a></h4>
-                                <div class="price">€ 129<span> / night</span></div>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="room mb40">
-                        <figure>
-                            <a href="room.html" class="hover_effect h_blue h_link">
-                                <img src="images/rooms/special3.jpg" class="img-responsive" alt="Image">
-                            </a>
-                            <figcaption>
-                                <h4><a href="room.html">Delux Room</a></h4>
-                                <div class="price">€ 189<span> / night</span></div>
-                            </figcaption>
-                        </figure>
-                    </article>
+                    @foreach (var type in ViewBag.RoomTypes)
+                    {
+                        <article class="room mb40">
+                            <figure>
+                                <a href="#" class="hover_effect h_blue h_link">
+                                    <img src="images/rooms/special1.jpg" class="img-responsive" alt="Image">
+                                </a>
+                                <figcaption>
+                                    <h4><a href="#">@type.RoomType</a></h4>
+                                    <div class="price">@type.Price<span> / Bed</span></div>
+                                </figcaption>
+                            </figure>
+                        </article>
+
+                    }
                 </div>
             </div>
 

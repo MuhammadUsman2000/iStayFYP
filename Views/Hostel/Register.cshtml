@@ -69,34 +69,32 @@
                                 @Html.ValidationMessageFor(model => model.hostel_name, "", new { @class = "text-danger" })
                             </div>
                             <div class="col">
-                                <label class="fieldlabels">Email: *</label>
+                                <label class="fieldlabels">Email: <span class="text-danger">*</span></label>
                                 @Html.EditorFor(model => model.hostel_email, new { htmlAttributes = new { @class = "input", placeholder = "hoste@gmail.com" } })
                                 @Html.ValidationMessageFor(model => model.hostel_email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label class="fieldlabels">Hostel Address.: *</label>
+                                <label class="fieldlabels">Hostel Address: <span class="text-danger">*</span></label>
                                 @Html.TextAreaFor(model => model.hostel_address, new { htmlAttributes = new { @class = "input", placeholder = "Hostel Address" } })
                                 @Html.ValidationMessageFor(model => model.hostel_address, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="fieldlabels">City.: *</label>
-                                @Html.EditorFor(model => model.city_name, new { htmlAttributes = new { @class = "input", placeholder = "City" } })
-                                @Html.ValidationMessageFor(model => model.city_name, "", new { @class = "text-danger" })
+                                <label class="fieldlabels">City: <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(model => model.CityID, ViewBag.CityList as SelectList, "--Select City--", new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.CityID, "", new { @class = "text-danger" })
                             </div>
                             <div class="col-md-4">
-                                <label class="fieldlabels">Institute.: *</label>
-                                <select name="institute" id="example" multiple="multiple">
-                                    <option value="UCP">UCP</option>
-                                    <option value="UMT">UMT</option>
-                                    <option value="Education">Education </option>
-                                </select>
+                                <label class="fieldlabels">Institute: <span class="text-danger">*</span></label>
+                                @Html.DropDownListFor(model => model.institute, new SelectList("  "), new { @class = "example", @multiple = "" })
+                                
                             </div>
                             <div class="col-md-4">
-                                <label class="fieldlabels">Hostel For: *</label>
+                                <label class="fieldlabels">Hostel For: <span class="text-danger">*</span></label>
                                 @Html.DropDownListFor(model => model.type, new List<SelectListItem>
                                     { new SelectListItem{Text="male", Value="Male"},
                                     new SelectListItem{Text="female", Value="female"}}, "-----Select-----", new { @class = "text-area" })
@@ -104,74 +102,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
-                                <label class="fieldlabels">Refregarator.: *</label>
-                                @Html.DropDownListFor(model => model.refregrator, new List<SelectListItem>
-                                    { new SelectListItem{Text="Yes", Value="Yes"},
-                                    new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.refregrator, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">kitchen.: *</label>
-                                @Html.DropDownListFor(model => model.kitchen, new List<SelectListItem>
-                                    { new SelectListItem{Text="Yes", Value="Yes"},
-                                    new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.kitchen, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">Mess.: *</label>
-                                @Html.DropDownListFor(model => model.Mess, new List<SelectListItem>
-                                    { new SelectListItem{Text="Yes", Value="Yes"},
-                                    new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.Mess, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">Laundry.: *</label>
-                                @Html.DropDownListFor(model => model.laundry, new List<SelectListItem>
-                                     { new SelectListItem{Text="Yes", Value="Yes"},
-                                     new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.laundry, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label class="fieldlabels">WI-FI.: *</label>
-                                @Html.DropDownListFor(model => model.wifi, new List<SelectListItem>
-                                    { new SelectListItem{Text="Yes", Value="Yes"},
-                                    new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.wifi, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">AC.: *</label>
-                                @Html.DropDownListFor(model => model.AC, new List<SelectListItem>
-                                    { new SelectListItem{Text="Yes", Value="Yes"},
-                                    new SelectListItem{Text="No", Value="No"}}, "-----Select-----", new { @class = "text-area" })
-                                @Html.ValidationMessageFor(model => model.AC, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">Rooms.: *</label>
-                                @Html.EditorFor(model => model.rooms, new { htmlAttributes = new { @class = "input", placeholder = "Hostel Address" } })
-                                @Html.ValidationMessageFor(model => model.rooms, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="col-md-3">
-                                <label class="fieldlabels">Rent.: *</label>
-                                @Html.EditorFor(model => model.rent, new { htmlAttributes = new { @class = "input", placeholder = "Hostel Address" } })
-                                @Html.ValidationMessageFor(model => model.rent, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col">
-                                <label class="fieldlabels">Description.: *</label>
-                                @Html.TextAreaFor(model => model.Desc, new { htmlAttributes = new { @class = "input", placeholder = "Hostel Description" }})
+                                <label class="fieldlabels">Description: <span class="text-danger">*</span></label>
+                                @Html.TextAreaFor(model => model.Desc, new { htmlAttributes = new { @class = "input", placeholder = "Hostel Description" } })
                                 @Html.ValidationMessageFor(model => model.Desc, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <label class="fieldlabels">Hostel Images</label>
-                        @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" ,@class="form-control"})
+                        <label class="fieldlabels">Hostel Images: <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
                         <br />
-                        <label class="fieldlabels">Signature Photo:</label>
-                        @Html.TextBoxFor(model => model.profile, "", new { @type = "file",@class = "form-control" })
+                        <label class="fieldlabels">Signature Photo: <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(model => model.profile, "", new { @type = "file", @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.profile, "", new { @class = "text-danger" })
                     </div>
 
@@ -190,14 +132,31 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <script src="~/Content/js/BsMultiSelect.js"></script>
     <script>
-        $("#example").bsMultiSelect({
-            cssPatch: {
-                choices: { columnCount: '1' },
-            }
-        });</script>
+       
+
+        $(document).ready(function () {
+            $(".example").bsMultiSelect({
+                cssPatch: {
+                    choices: { columnCount: '1' },
+                }
+            });
+            $("#CityID").change(function () {
+
+                $.get("/Hostel/GetInstitutes", { CityID: $("#CityID").val() }, function (data) {
+                    $("#institute").empty();
+                    $.each(data, function (Register, row) {
+                        $("#institute").append("<option value='" + row.ID + "'>" + row.Institutes_Name + "</option>");
+                        
+                        $('#institute').multiselect('destroy').removeData().multiselect();
+                    });
+                });
+            });
+        });
+    </script>
 }
 
 

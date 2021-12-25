@@ -80,11 +80,13 @@ namespace iStayFYP.Controllers
             var data1 = db.HostelInfoes.Where(x => x.city_name == data.city_name && x.type==data.type && x.ID != id).Include(x => x.Hostel_Institues).Include(x => x.Images).ToList();
             ViewBag.SimilarHostels = data1;
             
+            
             return View(data);
         }
 
-        public ActionResult Hostel_Booking(int? hostelID)
+        public ActionResult Hostel_Booking(int? id)
         {
+            ViewBag.RoomTypes = db.HostelRoomTypes.Where(x => x.HostelID == id).ToList();
             return View();
         }
     }

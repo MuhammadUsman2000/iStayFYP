@@ -172,6 +172,7 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\jquery.fancybox.css" />
     <Content Include="Content\css\jquery.fancybox.min.css" />
+    <Content Include="Content\css\LoginStyle.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\owl.carousel.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
@@ -275,6 +276,8 @@
     <Content Include="Content\images\layout_img\user.png" />
     <Content Include="Content\images\layout_img\user_img.jpg" />
     <Content Include="Content\images\layout_img\visa.png" />
+    <Content Include="Content\images\Login\BannerPic.jpg" />
+    <Content Include="Content\images\Login\LoginBG.jpg" />
     <Content Include="Content\images\logo.svg" />
     <Content Include="Content\images\logo\istayLogo.png" />
     <Content Include="Content\images\logo\logo.png" />
@@ -376,6 +379,7 @@
     <Content Include="Content\images\staff\staff8.jpg" />
     <Content Include="Content\images\subscribe_bg.jpg" />
     <Content Include="Content\images\swimming.jpg" />
+    <Content Include="Content\images\users\user.png" />
     <Content Include="Content\images\users\user1.jpg" />
     <Content Include="Content\images\users\user2.jpg" />
     <Content Include="Content\images\users\user3.jpg" />
